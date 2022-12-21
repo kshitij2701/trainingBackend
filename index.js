@@ -3,8 +3,13 @@ import mongoose from "mongoose";
 import cors from "cors";
 import morgan from "morgan";
 
+
 //testuser
 //testUser123k
+
+//Routes
+import  userRoutes  from "./routes/user.js";
+import tourRoutes from "./routes/tour.js";
 
 const app = express();
 const PORT = 5000;
@@ -26,11 +31,14 @@ mongoose
         console.log(`server running on ${PORT}`);
     });
   })
-  .catch((err) => console.log(err, "in err in connection")); 
+  .catch((err) => console.log(err, "in err in connection"));
+  
+app.use("/user", userRoutes);
+app.use("/tour", tourRoutes);
 
-app.get("/", (req, res) => {
-     res.send("Hello World");
-});
+// app.get("/", (req, res) => {
+//      res.send("Hello World");
+// });
 
 
 
